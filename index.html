@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.wrap {
+				position: relative;	/*为了让子菜单相对外围容器定位而不是body*/
+				width: 200px;
+				left: 50px;
+				top: 50px;
+			}
+			
+			ul {
+				padding: 15px 0;
+				margin: 9;
+				list-style: none;
+				background: #6c6669;
+				color: #ffffff;
+				border-right-width: 0;
+			}
+			
+			li {
+				display: block;
+				height: 30px;	/*字高和行高相等可以实现文字垂直居中*/
+				line-height: 30px;
+				padding-left: 12px;
+				font-size: 14px;
+				position: relative;
+			}
+			
+			li.active {
+				background: #999395;			
+			}
+			
+			li span:hover {
+				color: #c81623;
+				cursor: pointer;
+			}
+			
+			.sub_content a:hover {
+				color: #c81623;
+				cursor: pointer;
+			}
+			
+			.none {
+				display: none;
+			}
+			
+			#sub {
+				width: 1010px;
+				position: absolute;
+				border: 1px solid #f7f7f7;
+				background: #F7F7F7;
+				box-shadow: 2px 0 5px rgba(0,0,0,.3);
+				left: 200px;
+				top: 0;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 10px;
+			}
+			
+			.sub_content a {
+				font-size: 12px;
+				color: #666;
+				text-decoration: none;
+			}
+			
+			.sub_content dd a {
+				border-left: 1px solid #e0e0e0;
+				padding: 0 10px;
+				margin: 4px 0;
+				height: 12px;
+				line-height: 12px;
+			}
+			
+			.sub_content dl {
+				overflow: hidden;
+			}
+			
+			.sub_content dt {
+				float: left;
+				width: 70px;
+				font-weight: bold;
+				clear: left;
+				position: relative;
+			}
+			
+			.sub_content dd {
+				margin-left: 5px;
+				border-top: 1px solid #eee;
+				margin-bottom: 5px;
+				overflow: hidden;
+			}
+			
+			.sub_content dt i {
+				width: 4px;
+				height: 14px;
+				font: 400 9px/14px consolas;
+				position: absolute;
+				right: 5px;
+				top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul><!--一级菜单-->
+				<li data-id = "a">	<!--加id是为了和二级菜单中的项目映射-->
+					<span>家用电器</span>
+				</li>
+				<li data-id = "b">
+					<span>手机/运营商/数码</span>
+				</li>
+				<li data-id = "c">
+					<span>电脑/办公</span>
+				</li>
+				<li data-id = "d">
+					<span>家居/家具/家装/厨具</span>
+				</li>
+				<li data-id = "e">
+					<span>男装/女装/童装/内衣</span>
+				</li>
+				<li data-id = "f">
+					<span>美妆个护/宠物</span>
+				</li>
+				<li data-id = "g">
+					<span>女鞋/箱包/钟表/珠宝</span>
+				</li>
+				<li data-id = "h">
+					<span>男鞋/运动/户外</span>
+				</li>
+				<li data-id = "i">
+					<span>汽车/汽车用品</span>
+				</li>
+				<li data-id = "j">
+					<span>母婴/玩具乐器</span>
+				</li>
+				<li data-id = "k">
+					<span>食品/酒类/生鲜/特产</span>
+				</li>
+				<li data-id = "l">
+					<span>医药保健/计生情趣</span>
+				</li>
+				<li data-id = "m">
+					<span>图书/音像/电子书</span>
+				</li>
+				<li data-id = "n">
+					<span>机票/酒店/旅游/生活</span>
+				</li>
+				<li data-id = "o">
+					<span>理财/众筹/白条/保险</span>
+				</li>
+			</ul>
+			<div id="sub" class=""><!--二级菜单-->
+				<div id="a" class="sub_content">
+					<dl>
+						<dt>
+							<a href="#" target="_blank">电视<i>&gt;</i></a>
+						</dt>
+						<dd class="first">
+							<a href="#">合资品牌</a>
+							<a href="#">国产品牌</a>
+							<a href="#">互联网品牌</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#" target="_blank">空调<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">壁挂式空调</a>
+							<a href="#">柜式空调</a>
+							<a href="#">中央空调</a>
+							<a href="#">空调配件</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#" target="_blank">洗衣机<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">滚筒洗衣机</a>
+							<a href="#">洗烘一体机</a>
+							<a href="#">波轮洗衣机</a>
+							<a href="#">迷你洗衣机</a>
+							<a href="#">洗衣机配件</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#" target="_blank">冰箱<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">多门</a>
+							<a href="#">对开门</a>
+							<a href="#">三门</a>
+							<a href="#">双门</a>
+							<a href="#">冷柜/冰吧</a>
+							<a href="#">酒柜</a>
+							<a href="#">冰箱配件</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#" target="_blank">厨卫大电<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">油烟机</a>
+							<a href="#">燃气灶</a>
+							<a href="#">烟灶套装</a>
+							<a href="#">消毒柜</a>
+							<a href="#">洗碗机</a>
+							<a href="#">电热水器</a>
+							<a href="#">燃气热水器</a>
+							<a href="#">嵌入式厨电</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#" target="_blank">厨房小电<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">电饭煲</a>
+							<a href="#">微波炉</a>
+							<a href="#">电烤箱</a>
+							<a href="#">电磁炉</a>
+							<a href="#">电压力锅</a>
+							<a href="#">豆浆机</a>
+							<a href="#">咖啡机</a>
+							<a href="#">面包机</a>
+							<a href="#">榨汁机</a>
+							<a href="#">料理机</a>
+							<a href="#">电饼铛</a>
+							<a href="#">养生壶/煎药壶</a>
+							<a href="#">酸奶机</a>
+							<a href="#">煮蛋器</a>
+							<a href="#">面条机</a>
+							<a href="#">电水壶/热水瓶</a>
+							<a href="#">电炖锅</a>
+							<a href="#">多用途锅</a>
+							<a href="#">电烧烤炉</a>
+							<a href="#">电热饭盒</a>
+							<a href="#">其他厨房电器</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#" target="_blank">生活电器<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">电风扇</a>
+							<a href="#">冷风扇</a>
+							<a href="#">吸尘器/除螨仪</a>
+							<a href="#">净化器</a>
+							<a href="#">扫地机器人</a>
+							<a href="#">加湿器</a>
+							<a href="#">挂烫机/熨斗</a>
+							<a href="#">取暖电器</a>
+							<a href="#">插座</a>
+							<a href="#">电话机</a>
+							<a href="#">饮水机</a>
+							<a href="#">净水器</a>
+							<a href="#">除湿机</a>
+							<a href="#">干衣机</a>
+							<a href="#">清洁机</a>
+							<a href="#">收录/音机</a>
+							<a href="#">其他生活电器</a>
+							<a href="#">生活电器配件</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#" target="_blank">个护健康<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">剃须刀</a>
+							<a href="#">口腔护理</a>
+							<a href="#">电吹风</a>
+							<a href="#">美容器</a>
+							<a href="#">卷/直发器</a>
+							<a href="#">理发器</a>
+							<a href="#">剃/脱毛机</a>
+							<a href="#">足浴盆</a>
+							<a href="#">健康秤/厨房秤</a>
+							<a href="#">按摩器</a>
+							<a href="#">按摩椅</a>
+							<a href="#">其他健康电器</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#" target="_blank">家庭影音<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">家庭影院</a>
+							<a href="#">迷你音响</a>
+							<a href="#">DVD</a>
+							<a href="#">功放</a>
+							<a href="#">回音壁</a>
+							<a href="#">电视影音配件</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="#" target="_blank">进口电器<i>&gt;</i></a>
+						</dt>
+						<dd>
+							<a href="#">进口电器</a>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
