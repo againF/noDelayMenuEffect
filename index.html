@@ -62,6 +62,7 @@
 				box-sizing: border-box;
 				margin: 0;
 				padding: 10px;
+				overflow: hidden;
 			}
 			
 			.sub_content a {
@@ -108,7 +109,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="wrap">
+		<div class="wrap" id="test">
 			<ul><!--一级菜单-->
 				<li data-id = "a">	<!--加id是为了和二级菜单中的项目映射-->
 					<span>家用电器</span>
@@ -156,8 +157,8 @@
 					<span>理财/众筹/白条/保险</span>
 				</li>
 			</ul>
-			<div id="sub" class=""><!--二级菜单-->
-				<div id="a" class="sub_content">
+			<div id="sub" class="none"><!--二级菜单-->
+				<div id="a" class="sub_content none">
 					<dl>
 						<dt>
 							<a href="#" target="_blank">电视<i>&gt;</i></a>
@@ -316,5 +317,7 @@
 				</div>
 			</div>
 		</div>
+		<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+		<script src="js/megaDropDown.js"></script>
 	</body>
 </html>
