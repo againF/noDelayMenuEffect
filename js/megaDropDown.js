@@ -10,9 +10,25 @@ $(document).ready(function() {
 	}).on('mouseleave', function(e) {
 		mouseInSub = false;
 	})
+	
+	var mouseTrack = [];//记录鼠标的位置 	
+	
+	var moveHandler = function(e) {//获取当前鼠标相对于页面的坐标
+		mouseTrack.push({
+			x: e.pageX,
+			y: e.pageY
+		})
+		
+		if(mouseTrack.length > 3) {//由于我们只需要知道当前及上一次的鼠标坐标，所以我们不用保存太多坐标，把多余的弹出
+			mouseTrack.shift();
+		}
+	}
+	
 	$('#test')//一级菜单
 	 .on('mouseenter', function(e) {//鼠标移动到一级菜单时显示二级菜单
 		sub.removeClass('none');
+		
+		$(document).bind('mousemove',moveHandler);//在document上绑定mousemove事件
 	})
 	 .on('mouseleave', function(e) {//鼠标离开一级菜单时隐藏二级菜单
 	 	sub.addClass('none');
@@ -26,6 +42,8 @@ $(document).ready(function() {
 	 		activeMenu.addClass('none');
 	 		activeMenu = null;
 	 	}
+	 	
+	 	$(document).unbind('mousemove',moveHandler);//解除绑定
 	 })
 	 .on('mouseenter','li',function(e) {
 	 	if(!activeRow) {	//如果当前没有激活的列表项
@@ -39,18 +57,38 @@ $(document).ready(function() {
 	 		clearTimeout(timer);
 	 	}
 	 	
-	 	timer = setTimeout(function() {
-	 		if(mouseInSub) {
+	 	var currMousePos = mouseTrack[mouseTrack.length - 1];//当前鼠标的位置
+	 	var leftCorner = mouseTrack[mouseTrack.length - 2];//鼠标上一次的坐标，也就是三角形中A点的坐标
+	 	
+	 	var delay = needDelay(sub, leftCorner, currMousePos);
+	 	
+	 	if(delay) {//如果需要延迟
+	 		timer = setTimeout(function() {
+	 		 if(mouseInSub) {
 	 			return;
-	 		}
-	 		activeRow.removeClass('active');
-	 		activeMenu.addClass('none');
+	 		 }
+	 		 activeRow.removeClass('active');
+	 		 activeMenu.addClass('none');
+	 		 activeRow = $(e.target);
+	 		 activeRow.addClass('active');
+	 		 activeMenu = $('#' + activeRow.data('id'));
+	 		 activeMenu.removeClass('none');
+	 		 timer = null;
+	 	    },300);
+	 	}else {//若不需要延迟则直接展示
+	 		var prevActiveRow = activeRow;
+	 		var prevActiveMenu = activeMenu;
+	 		
 	 		activeRow = $(e.target);
-	 		activeRow.addClass('active');
 	 		activeMenu = $('#' + activeRow.data('id'));
+	 		
+	 		prevActiveRow.removeClass('active');
+	 		prevActiveMenu.addClass('none');
+	 		
+	 		activeRow.addClass('active');
 	 		activeMenu.removeClass('none');
-	 		timer = null;
-	 	},300);
+	 	}
+	 	
 	 	
 	 	
 	 });
