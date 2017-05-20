@@ -1,4 +1,4 @@
-function sameSign(a, b) {//判断a,b符号是否相同，用到了位运算的技巧
+function sameSign(a, b) {//用异或判断a,b符号是否相同，用到了位运算的技巧
 	return (a ^ b) >= 0;
 }
 function vector(a, b) {//向量的运算
@@ -21,7 +21,7 @@ function isPointInTrangle(p, a, b, c) {//鼠标当前点是否在三角形ABC内
 	var t2 = vectorProduct(pb, pc);//pb,pc的叉乘结果
 	var t3 = vectorProduct(pc, pa);//pc,pa的叉乘结果
 	
-	return sameSign(t1, t2) && sameSign(t2, t3);
+	return sameSign(t1, t2) && sameSign(t2, t3);//如果t1,t2符号相同，且t2,t3符号相同，那t1,t3符号肯定相同
 }
 
 function needDelay(elem, leftCorner, currMousePos) {//是否需要延迟
